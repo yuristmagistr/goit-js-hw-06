@@ -1,23 +1,23 @@
-function isEnoughCapacity(products, containerSize) {
-  let totalValue = 0;
-  for (const product of Object.values(products)) {
-    totalValue += product;
-  }
-  return totalValue <= containerSize;
+const pizzaPalace = {
+  pizzas: ["Supercheese", "Smoked", "Four meats"],
+  checkPizza(pizzaName) {
+    return this.pizzas.includes(pizzaName);
+  },
+  order(pizzaName) {
+    const isPizzaAvailable = this.checkPizza(pizzaName);
+
+    if (!isPizzaAvailable) {
+      return `Sorry, there is no pizza named «${pizzaName}»`;
+    }
+
+    return `Order accepted, preparing «${pizzaName}» pizza`;
+  },
+};
+console.log(pizzaPalace.order("Viennese"));
+
+
+function foo() {
+  console.log(this);
 }
 
-console.log(
-  isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)
-); // true
-
-console.log(
-  isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)
-); // false
-
-console.log(
-  isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)
-); // true
-
-console.log(
-  isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)
-); // false
+foo();
